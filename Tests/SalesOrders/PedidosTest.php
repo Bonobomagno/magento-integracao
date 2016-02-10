@@ -2,12 +2,13 @@
 
 require '../../AutoLoader.php';
 
-//MagentoConfigs::$CONTEXT = 'SOAP';
-MagentoConfigs::$CONTEXT = 'REST';
+MagentoConfigs::$CONTEXT = 'SOAP';
+//MagentoConfigs::$CONTEXT = 'REST';
 
 $mgr = new \Managers\PedidosDeVenda\MagentoPedidosMgr();
 
-$result = $mgr->ConsultarPedidos();
+//$result = $mgr->ConsultarPedidos();
+$result = $mgr->ConsultarPedido(100000001);
 
 if ($result->IsSuccess()) {
     echo "Total: " . count($result->GetResult()) . "<br>";

@@ -60,7 +60,7 @@ abstract class ProxyFactory {
     
     public static function FactoryOrders($context) {
         switch ($context) {
-            case \MagentoConfigs::$SOAP: return new Soap\Products\ProductsProxy();
+            case \MagentoConfigs::$SOAP: return new Soap\SalesOrders\OrdersSoapProxy();
             case \MagentoConfigs::$REST: return new Rest\SalesOrders\OrdersRestProxy();
         }
     }
@@ -81,7 +81,7 @@ abstract class ProxyFactory {
     
     public static function FactoryOrderItems($context) {
         switch ($context) {
-            case \MagentoConfigs::$SOAP: return new Soap\Products\ProductsProxy();
+            case \MagentoConfigs::$SOAP: return new Soap\SalesOrders\OrderItemsSoapProxy();
             case \MagentoConfigs::$REST: return new Rest\SalesOrders\OrderItemsRestProxy();
         }
     }
