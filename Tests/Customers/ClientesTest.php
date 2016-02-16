@@ -2,8 +2,8 @@
 
 require '../../AutoLoader.php';
 
-//MagentoConfigs::$CONTEXT = 'SOAP';
-MagentoConfigs::$CONTEXT = 'REST';
+MagentoConfigs::$CONTEXT = 'SOAP';
+//MagentoConfigs::$CONTEXT = 'REST';
 
 /*
 $cliente = new \Resources\Customers\CustomerResource();
