@@ -105,13 +105,13 @@ abstract class RestProxyBase implements IProxy {
     /**
      * HTTP Method: GET
      * @param int $id
-     * @return type
+     * @return ProxyResultBase
      */
     public function Show($id) {
         $resourceName = $this->GetResourceName();
         $resourceUrl = $this->GetContext()->GetApiUrl() . "/$resourceName/$id";
         try {
-            $this->GetContext()->GetClient()->fetch($resourceUrl);
+            $this->GetContext()->GetClient()->fetch($resourceUrl, array(), OAUTH_HTTP_METHOD_GET, $this->GetContext()->GetHeaders());
             $lastResponse = $this->GetContext()->GetClient()->getLastResponse();
             $resource = json_decode($lastResponse);
             
@@ -132,7 +132,7 @@ abstract class RestProxyBase implements IProxy {
     /**
      * HTTP Method: PUT
      * @param IResource $resource
-     * @return type
+     * @return ProxyResultBase
      */
     public function Update($id, IResource $resource) {
         $resourceName = $this->GetResourceName();
@@ -159,7 +159,7 @@ abstract class RestProxyBase implements IProxy {
     /**
      * HTTP Method: DELETE
      * @param int $id
-     * @return type
+     * @return ProxyResultBase
      */
     public function Destroy($id) {
         $resourceName = $this->GetResourceName();
