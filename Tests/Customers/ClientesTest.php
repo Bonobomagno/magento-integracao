@@ -7,23 +7,24 @@ MagentoConfigs::$CONTEXT = 'SOAP';
 
 /*
 $cliente = new \Resources\Customers\CustomerResource();
-$cliente->firstname = 'Jhon';
+$cliente->firstname = 'Glauber';
 $cliente->lastname = 'Joe';
-$cliente->email = 'glauber@eccosys.com.br';
-$cliente->password = '123';
+$cliente->email = 'suporte@eccosys.com.br';
+$cliente->password = '123456';
 $cliente->website_id = 1;
 $cliente->group_id = 1;
  * 
  */
+ 
 
 
-$mgr = new MagentoClientesMgr();
+$mgr = new \Managers\Clientes\MagentoClientesMgr();
 
 $result = $mgr->ConsultarClientes();
 //$result = $mgr->ConsultarCliente(1);
 //$result = $mgr->CriarCliente($cliente);
-//$result = $mgr->EditarCliente(1, $cliente);
-//$result = $mgr->ExcluirCliente(1);
+//$result = $mgr->EditarCliente(2, $cliente);
+//$result = $mgr->ExcluirCliente(2);
 
 
 if ($result->IsSuccess()) {

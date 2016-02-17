@@ -1,5 +1,7 @@
 <?php
 
+namespace Managers\Clientes;
+
 use Proxies\IProxy;
 use Proxies\ProxyFactory;
 use Resources\Customers\CustomerResource;
@@ -13,7 +15,7 @@ final class MagentoClientesMgr {
     private $proxy;
 
     public function __construct() {
-        $this->proxy = ProxyFactory::FactoryCustomers(MagentoConfigs::$CONTEXT);
+        $this->proxy = ProxyFactory::FactoryCustomers(\MagentoConfigs::$CONTEXT);
     }
     
     /**
