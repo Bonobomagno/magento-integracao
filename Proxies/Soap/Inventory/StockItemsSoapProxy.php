@@ -9,14 +9,21 @@ use ProxyResults\ProxyResultBase;
 
 final class StockItemsSoapProxy extends SoapProxyBase implements IStockItemsProxy {
     
-    
-    public function Destroy($id) {
-        
-    }
-
+    /**
+     * Allows you to retrieve the list of existing stock items.
+     * SOAP Method: catalogInventoryStockItemList
+     * @return ProxyResultBase
+     */
     public function Index() {
         try {
-            $result = $this->GetContext()->GetClient()->catalogInventoryStockItemList($this->GetContext()->GetSession());
+            $products = $this->GetContext()->GetClient()->catalogProductList($this->GetContext()->GetSession());
+            
+            $ids = array();
+            foreach ($products as $product) {
+                array_push($ids, $product->product_id);
+            }
+            
+            $result = $this->GetContext()->GetClient()->catalogInventoryStockItemList($this->GetContext()->GetSession(), $ids);
             
             return ProxyResultBase::CreateSuccessResult($result);
         } catch (\SoapFault $ex) {
@@ -25,6 +32,17 @@ final class StockItemsSoapProxy extends SoapProxyBase implements IStockItemsProx
         }
     }
 
+    
+    public function Store(IResource $resource) {
+        
+    }
+
+    /**
+     * Allows you to retrieve the stock item information.
+     * SOAP Method: catalogInventoryStockItemList
+     * @param int $id
+     * @return ProxyResultBase
+     */
     public function Show($id) {
         try {
             $result = $this->GetContext()->GetClient()->catalogInventoryStockItemList($this->GetContext()->GetSession(), array($id));
@@ -36,15 +54,15 @@ final class StockItemsSoapProxy extends SoapProxyBase implements IStockItemsProx
         }
     }
 
-    public function Store(IResource $resource) {
-        
-    }
-
     public function Update($id, IResource $resource) {
         
     }
 
     public function UpdateStockItems($stockItems) {
+        
+    }
+    
+    public function Destroy($id) {
         
     }
 
