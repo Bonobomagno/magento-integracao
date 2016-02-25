@@ -6,18 +6,18 @@ use Proxies\Rest\RestProxyBase;
 
 final class CustomerAddressesRestProxy extends RestProxyBase {
     
-    private $costumer_id;
+    private $customer_id;
     
     public function GetResourceName() {
-        if (!isset($this->costumer_id)) {
+        if (!isset($this->customer_id)) {
             return "customers/addresses";
         }
         
-        return "customers/{$this->costumer_id}/addresses";
+        return "customers/{$this->customer_id}/addresses";
     }
     
-    public function SetCostumerId($costumer_id) {
-        $this->costumer_id = $costumer_id;
+    public function SetCustomerId($customer_id) {
+        $this->customer_id = $customer_id;
     }
 
 }

@@ -46,7 +46,7 @@ abstract class ProxyFactory {
     
     public static function FactoryCustomerAddresses($context) {
         switch ($context) {
-            case \MagentoConfigs::$SOAP: return new Soap\Products\ProductsProxy();
+            case \MagentoConfigs::$SOAP: return new Soap\Customers\CustomerAddressesSoapProxy();
             case \MagentoConfigs::$REST: return new Rest\Customers\CustomerAddressesRestProxy();
         }
     }

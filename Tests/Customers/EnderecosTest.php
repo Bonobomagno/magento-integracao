@@ -2,8 +2,8 @@
 
 require '../../AutoLoader.php';
 
-//MagentoConfigs::$CONTEXT = 'SOAP';
-MagentoConfigs::$CONTEXT = 'REST';
+MagentoConfigs::$CONTEXT = 'SOAP';
+//MagentoConfigs::$CONTEXT = 'REST';
 
 /*
 $endereco = new Resources\Customers\CustomerAdressResource();
@@ -17,13 +17,13 @@ $endereco->postcode = '95700-000';
 $endereco->telephone = '5481475112';
  */
 
-$mgr = new MagentoEnderecosMgr();
+$mgr = new \Managers\Clientes\MagentoClienteEnderecosMgr();
 
-//$result = $mgr->ConsultarEnderecosDoCliente(1);
+$result = $mgr->ConsultarEnderecosDoCliente(1);
 //$result = $mgr->ConsultarEndereco(1);
 //$result = $mgr->AdicionarEnderecoAoCliente(1, $endereco);
 //$result = $mgr->EditarEndereco(1, $endereco);
-$result = $mgr->ExcluirEndereco(1);
+//$result = $mgr->ExcluirEndereco(1);
 
 
 if ($result->IsSuccess()) {
