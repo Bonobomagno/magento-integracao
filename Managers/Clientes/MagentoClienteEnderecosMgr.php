@@ -1,5 +1,7 @@
 <?php
 
+namespace Managers\Clientes;
+
 use Proxies\ProxyFactory;
 use Resources\Customers\CustomerAdressResource;
 
@@ -8,16 +10,16 @@ final class MagentoClienteEnderecosMgr {
     private $proxy;
 
     public function __construct() {
-        $this->proxy = ProxyFactory::FactoryCustomerAddresses(MagentoConfigs::$CONTEXT);
+        $this->proxy = ProxyFactory::FactoryCustomerAddresses(\MagentoConfigs::$CONTEXT);
     }
     
-    public function ConsultarEnderecosDoCliente($costumer_id) {
-        $this->proxy->SetCostumerId($costumer_id);
+    public function ConsultarEnderecosDoCliente($customer_id) {
+        $this->proxy->SetCustomerId($customer_id);
         return $this->proxy->Index();
     }
     
-    public function AdicionarEnderecoAoCliente($costumer_id, CustomerAdressResource $customerAdress) {
-        $this->proxy->SetCostumerId($costumer_id);
+    public function AdicionarEnderecoAoCliente($customer_id, CustomerAdressResource $customerAdress) {
+        $this->proxy->SetCustomerId($customer_id);
         return $this->proxy->Store($customerAdress);
     }
     
