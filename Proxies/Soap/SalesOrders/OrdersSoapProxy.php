@@ -17,7 +17,7 @@ final class OrdersSoapProxy extends SoapProxyBase {
         try {
             $result = $this->GetContext()->GetClient()->salesOrderList($this->GetContext()->GetSession());
             return ProxyResultBase::CreateSuccessResult($result); 
-        } catch (\Exception $ex) {
+        } catch (\SoapFault $ex) {
             $errors = array();
             return ProxyResultBase::CreateErrorResult($errors, $ex->getMessage());
         }
@@ -42,7 +42,7 @@ final class OrdersSoapProxy extends SoapProxyBase {
         try {
             $result = $this->GetContext()->GetClient()->salesOrderInfo($this->GetContext()->GetSession(), $id);
             return ProxyResultBase::CreateSuccessResult($result);
-        } catch (\Exception $ex) {
+        } catch (\SoapFault $ex) {
             $errors = array();
             return ProxyResultBase::CreateErrorResult($errors, $ex->getMessage());
         }

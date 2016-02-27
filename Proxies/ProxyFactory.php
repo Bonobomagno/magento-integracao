@@ -6,7 +6,7 @@ abstract class ProxyFactory {
     
     /**
      * 
-     * @param type $context
+     * @param string $context
      * @return \Proxies\Rest\Products\ProductsRestProxy|\Proxies\Soap\Products\ProductsSoapProxy
      */
     public static function FactoryProducts($context) {
@@ -67,7 +67,7 @@ abstract class ProxyFactory {
     
     public static function FactoryOrderAddresses($context) {
         switch ($context) {
-            case \MagentoConfigs::$SOAP: return new Soap\Products\ProductsProxy();
+            case \MagentoConfigs::$SOAP: return new Soap\SalesOrders\OrderAddressesSoapProxy();
             case \MagentoConfigs::$REST: return new Rest\SalesOrders\OrderAddressesRestProxy();
         }
     }
