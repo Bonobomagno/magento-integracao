@@ -2,14 +2,14 @@
 
 require '../../AutoLoader.php';
 
-//MagentoConfigs::$CONTEXT = 'SOAP';
-MagentoConfigs::$CONTEXT = 'REST';
+MagentoConfigs::$CONTEXT = 'SOAP';
+//MagentoConfigs::$CONTEXT = 'REST';
 
 $mgr = new Managers\PedidosDeVenda\MagentoPedidoEnderecosMgr();
 
-//$result = $mgr->ConsultarEnderecosDoPedido(1);
-$result = $mgr->ConsultarEnderecoDeCobrancaDoPedido(1);
-//$result = $mgr->ConsultarEnderecoDeEntregaDoPedido(1);
+//$result = $mgr->ConsultarEnderecosDoPedido('100000001');
+//$result = $mgr->ConsultarEnderecoDeCobrancaDoPedido('100000001');
+$result = $mgr->ConsultarEnderecoDeEntregaDoPedido('100000001');
 
 if ($result->IsSuccess()) {
     echo "Total: " . count($result->GetResult()) . "<br>";
