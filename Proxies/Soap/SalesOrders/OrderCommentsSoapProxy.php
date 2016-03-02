@@ -6,23 +6,24 @@ use Proxies\Soap\SoapProxyBase;
 use Resources\IResource;
 use ProxyResults\ProxyResultBase;
 
-final class OrderItemsSoapProxy extends SoapProxyBase {
+final class OrderCommentsSoapProxy extends SoapProxyBase {
     
     private $order_id;
-    
+
     public function SetOrderId($order_id) {
         $this->order_id = $order_id;
     }
     
     /**
-     * Allows you to retrieve the list of existing order items with detailed items information.
+     * Allows you to retrieve information about comments of the required order.
      * SOAP Method: salesOrderInfo
+     * @return ProxyResultBase
      */
     public function Index() {
         try {
             $result = $this->GetContext()->GetClient()->salesOrderInfo($this->GetContext()->GetSession(), $this->order_id);
-            return ProxyResultBase::CreateSuccessResult($result->items); 
-        } catch (\Exception $ex) {
+            return ProxyResultBase::CreateSuccessResult($result->status_history);
+        } catch (\SoapFault $ex) {
             $errors = array();
             return ProxyResultBase::CreateErrorResult($errors, $ex->getMessage());
         }
@@ -39,7 +40,7 @@ final class OrderItemsSoapProxy extends SoapProxyBase {
 
     /**
      * Not Implemented.
-     * @param int $id
+     * @param type $id
      * @throws \Exceptions\NotImplementedException
      */
     public function Show($id) {
@@ -48,7 +49,7 @@ final class OrderItemsSoapProxy extends SoapProxyBase {
 
     /**
      * Not Implemented.
-     * @param int $id
+     * @param type $id
      * @param IResource $resource
      * @throws \Exceptions\NotImplementedException
      */
@@ -58,7 +59,7 @@ final class OrderItemsSoapProxy extends SoapProxyBase {
     
     /**
      * Not Implemented.
-     * @param int $id
+     * @param type $id
      * @throws \Exceptions\NotImplementedException
      */
     public function Destroy($id) {

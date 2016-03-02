@@ -10,6 +10,7 @@ use ProxyResults\ProxyResultBase;
 final class ProductsSoapProxy extends SoapProxyBase implements IProductsProxy {
     
     /**
+     * Retrieve the list of products assigned to a required category.
      * SOAP Method: catalogCategoryAssignedProducts
      * @param int $category_id
      * @return ProxyResultBase
@@ -30,6 +31,7 @@ final class ProductsSoapProxy extends SoapProxyBase implements IProductsProxy {
     }
     
     /**
+     * Allows you to retrieve the list of products.
      * SOAP Method: catalogProductList
      * @return ProxyResultBase
      */
@@ -44,6 +46,7 @@ final class ProductsSoapProxy extends SoapProxyBase implements IProductsProxy {
     }
     
     /**
+     * Allows you to create a new product and return ID of the created product.
      * SOAP Method: catalogProductCreate 
      * @param IResource $resource
      * @return ProxyResultBase
@@ -64,6 +67,7 @@ final class ProductsSoapProxy extends SoapProxyBase implements IProductsProxy {
     }
     
     /**
+     * Allows you to retrieve information about the required product.
      * SOAP Method: catalogProductInfo
      * @param int $id
      * @return ProxyResultBase
@@ -79,6 +83,7 @@ final class ProductsSoapProxy extends SoapProxyBase implements IProductsProxy {
     }
     
     /**
+     * Allows you to update the required product. Note that you should specify only those parameters which you want to be updated.
      * SOAP Method: catalogProductUpdate
      * @param int $id
      * @param IResource $resource
@@ -95,13 +100,14 @@ final class ProductsSoapProxy extends SoapProxyBase implements IProductsProxy {
     }
     
     /**
-     * HTTP Method: DELETE
+     * Allows you to delete the required product.
+     * SOAP Method: catalogProductDelete
      * @param int $id
      * @return ProxyResultBase
      */
     public function Destroy($id) {
         try {
-            $result = $this->GetContext()->GetClient()->catalogProductUpdate($this->GetContext()->GetSession(), $id, 'product');
+            $result = $this->GetContext()->GetClient()->catalogProductDelete($this->GetContext()->GetSession(), $id, 'product');
             return ProxyResultBase::CreateSuccessResult($result);
         } catch (\Exception $ex) {
             $errors = array();

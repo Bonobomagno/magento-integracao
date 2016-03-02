@@ -35,7 +35,7 @@ final class OrdersSoapProxy extends SoapProxyBase {
     /**
      * Allows you to retrieve the required order information.
      * SOAP Method: salesOrderInfo
-     * @param type $id
+     * @param int $id
      * @return ProxyResultBase
      */
     public function Show($id) {
@@ -50,7 +50,7 @@ final class OrdersSoapProxy extends SoapProxyBase {
 
     /**
      * Not Implemented.
-     * @param type $id
+     * @param int $id
      * @param IResource $resource
      * @throws \Exceptions\NotImplementedException
      */
@@ -60,7 +60,7 @@ final class OrdersSoapProxy extends SoapProxyBase {
     
     /**
      * Not Implemented.
-     * @param type $id
+     * @param int $id
      * @throws \Exceptions\NotImplementedException
      */
     public function Destroy($id) {

@@ -14,17 +14,11 @@ final class ProductCategoriesSoapProxy extends SoapProxyBase {
         $this->product_id = $product_id;
     }
 
-    public function Destroy($id) {
-        try {
-            $this->ValidateProductId();
-            $result = $this->GetContext()->GetClient()->catalogCategoryRemoveProduct($this->GetContext()->GetSession(), $id, $this->product_id, 'product');
-            return ProxyResultBase::CreateSuccessResult($result);
-        } catch (\Exception $ex) {
-            $errors = array();
-            return ProxyResultBase::CreateErrorResult($errors, $ex->getMessage());
-        }
-    }
-
+    /**
+     * Allows you to retrieve information about assigned categories, assign, and unassign a category from/to a product.
+     * SOAP Method: catalogProductInfo
+     * @return ProxyResultBase
+     */
     public function Index() {
         try {
             $this->ValidateProductId();
@@ -45,27 +39,63 @@ final class ProductCategoriesSoapProxy extends SoapProxyBase {
         }
     }
 
-    public function Show($id) {
-        $errors = array();
-        return ProxyResultBase::CreateErrorResult($errors, 'Not implemented.');
-    }
-
-    public function Store(\Resources\IResource $resource) {
+    /**
+     * Allows you to assign a category to a specified product.
+     * SOAP Method: catalogCategoryAssignProduct
+     * @param IResource $resource
+     * @return ProxyResultBase
+     */
+    public function Store(IResource $resource) {
         try {
             $this->ValidateProductId();
             $result = $this->GetContext()->GetClient()->catalogCategoryAssignProduct($this->GetContext()->GetSession(), $resource->category_id, $this->product_id, null, 'product');
             return ProxyResultBase::CreateSuccessResult($result);
-        } catch (\Exception $ex) {
+        } catch (\SoapFault $ex) {
             $errors = array();
             return ProxyResultBase::CreateErrorResult($errors, $ex->getMessage());
         }
     }
 
+    /**
+     * Allows you to unassign a category from a specified product.
+     * SOAP Method: catalogCategoryRemoveProduct
+     * @param int $id
+     * @return ProxyResultBase
+     */
+    public function Destroy($id) {
+        try {
+            $this->ValidateProductId();
+            $result = $this->GetContext()->GetClient()->catalogCategoryRemoveProduct($this->GetContext()->GetSession(), $id, $this->product_id, 'product');
+            return ProxyResultBase::CreateSuccessResult($result);
+        } catch (\SoapFault $ex) {
+            $errors = array();
+            return ProxyResultBase::CreateErrorResult($errors, $ex->getMessage());
+        }
+    }
+
+    /**
+     * Not implemented.
+     * @param type $id
+     * @throws \Exceptions\NotImplementedException
+     */
+    public function Show($id) {
+        throw new \Exceptions\NotImplementedException;
+    }
+
+    /**
+     * Not implemented.
+     * @param int $id
+     * @param IResource $resource
+     * @throws \Exceptions\NotImplementedException
+     */
     public function Update($id, IResource $resource) {
-        $errors = array();
-        return ProxyResultBase::CreateErrorResult($errors, 'Not implemented.');
+        throw new \Exceptions\NotImplementedException;
     }
     
+    /**
+     * Validate if product ID was specified.
+     * @throws Exception
+     */
     private function ValidateProductId() {
         if (!isset($this->product_id)) {
             throw new Exception('The product ID was not specified.');
