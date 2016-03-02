@@ -17,6 +17,7 @@ final class ProductWebsitesSoapProxy extends SoapProxyBase {
 
     /**
      * Allows you to retrieve information about websites assigned to the specified product.
+     * SOAP Method: catalogProductInfo
      * @return ProxyResultBase
      */
     public function Index() {
@@ -40,16 +41,8 @@ final class ProductWebsitesSoapProxy extends SoapProxyBase {
     }
 
     /**
-     * Not implemented.
-     * @param int $id
-     * @return ProxyResultBase
-     */
-    public function Show($id) {
-        return ProxyResultBase::CreateErrorResult(array(), 'Not implemented.');
-    }
-
-    /**
      * Allows you to assign a website to a specified product.
+     * SOAP Method: catalogProductUpdate
      * @param IResource $resource
      * @return ProxyResultBase
      */
@@ -80,18 +73,8 @@ final class ProductWebsitesSoapProxy extends SoapProxyBase {
     }
 
     /**
-     * Not implemented.
-     * @param type $id
-     * @param IResource $resource
-     * @return ProxyResultBase
-     */
-    public function Update($id, IResource $resource) {
-        return ProxyResultBase::CreateErrorResult(array(), 'Not implemented.');
-    }
-
-    /**
      * Allows you to unassign a website from a specified product.
-     * @param type $id
+     * @param int $id
      * @return ProxyResultBase
      */
     public function Destroy($id) {
@@ -118,6 +101,25 @@ final class ProductWebsitesSoapProxy extends SoapProxyBase {
         else {
             return $result;
         }
+    }
+
+    /**
+     * Not implemented.
+     * @param int $id
+     * @throws \Exceptions\NotImplementedException
+     */
+    public function Show($id) {
+        throw new \Exceptions\NotImplementedException;
+    }
+
+    /**
+     * Not implemented.
+     * @param int $id
+     * @param IResource $resource
+     * @throws \Exceptions\NotImplementedException
+     */
+    public function Update($id, IResource $resource) {
+        throw new \Exceptions\NotImplementedException;
     }
     
     private function ValidateProductId() {

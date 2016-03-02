@@ -23,7 +23,8 @@ final class OrderAddressesSoapProxy extends SoapProxyBase {
     }
     
     /**
-     * 
+     * Allows you to retrieve information on billing and shipping addresses from the required order.
+     * SOAP Method: salesOrderInfo
      * @return ProxyResultBase
      */
     public function Index() {
@@ -37,7 +38,8 @@ final class OrderAddressesSoapProxy extends SoapProxyBase {
     }
     
     /**
-     * 
+     * Allows you to retrieve information on billing or shipping addresses from the required order.
+     * SOAP Method: salesOrderInfo
      * @param int $id
      * @return ProxyResultBase
      */
@@ -60,7 +62,7 @@ final class OrderAddressesSoapProxy extends SoapProxyBase {
     }
 
     /**
-     * 
+     * Not Implemented.
      * @param int $id
      * @throws \Exceptions\NotImplementedException
      */
@@ -69,7 +71,7 @@ final class OrderAddressesSoapProxy extends SoapProxyBase {
     }
 
     /**
-     * 
+     * Not Implemented.
      * @param IResource $resource
      * @throws \Exceptions\NotImplementedException
      */
@@ -78,7 +80,7 @@ final class OrderAddressesSoapProxy extends SoapProxyBase {
     }
 
     /**
-     * 
+     * Not Implemented.
      * @param int $id
      * @param IResource $resource
      * @throws \Exceptions\NotImplementedException

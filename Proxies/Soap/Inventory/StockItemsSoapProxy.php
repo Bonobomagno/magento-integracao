@@ -33,15 +33,6 @@ final class StockItemsSoapProxy extends SoapProxyBase implements IStockItemsProx
     }
 
     /**
-     * Not implemented.
-     * @param IResource $resource
-     * @throws \Exceptions\NotImplementedException
-     */
-    public function Store(IResource $resource) {
-        throw new \Exceptions\NotImplementedException;
-    }
-
-    /**
      * Allows you to retrieve the stock item information.
      * SOAP Method: catalogInventoryStockItemList
      * @param int $id
@@ -76,7 +67,8 @@ final class StockItemsSoapProxy extends SoapProxyBase implements IStockItemsProx
     }
 
     /**
-     * Allows you to update the required products stock data.
+     * Allows you to update existing stock items.
+     * SOAP Method: catalogInventoryStockItemUpdate
      * @param array $stockItems
      * @return ProxyResultBase
      */
@@ -96,6 +88,15 @@ final class StockItemsSoapProxy extends SoapProxyBase implements IStockItemsProx
         return ProxyResultBase::CreateSuccessResult($results);
     }
     
+
+    /**
+     * Not implemented.
+     * @param IResource $resource
+     * @throws \Exceptions\NotImplementedException
+     */
+    public function Store(IResource $resource) {
+        throw new \Exceptions\NotImplementedException;
+    }
     /**
      * Not implemented.
      * @param type $id

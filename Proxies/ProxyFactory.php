@@ -74,7 +74,7 @@ abstract class ProxyFactory {
     
     public static function FactoryOrderComments($context) {
         switch ($context) {
-            case \MagentoConfigs::$SOAP: return new Soap\Products\ProductsProxy();
+            case \MagentoConfigs::$SOAP: return new Soap\SalesOrders\OrderCommentsSoapProxy();
             case \MagentoConfigs::$REST: return new Rest\SalesOrders\OrderCommentsRestProxy();
         }
     }

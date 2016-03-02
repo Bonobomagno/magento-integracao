@@ -8,7 +8,7 @@ use ProxyResults\ProxyResultBase;
 interface IStockItemsProxy {
     
     /**
-     * 
+     * Allows you to update existing stock items.
      * @param StockItemResource[] $stockItems
      * @return ProxyResultBase
      */
