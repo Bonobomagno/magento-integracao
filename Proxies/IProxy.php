@@ -3,13 +3,14 @@
 namespace Proxies;
 
 use Resources\IResource;
+use Filters\IFilter;
 
 interface IProxy {
     
     /**
      * Allows you to retrieve a list of resources with detailed information.
      */
-    public function Index();
+    public function Index(IFilter $filter);
     
     /**
      * Allows you to create a new resource.

@@ -19,4 +19,16 @@ class ResourceBase implements IResource {
         return $parameters;
     }
 
+    public function StdClassToObject(\stdClass $stdClass) {
+        $reflect = new \ReflectionClass($this);
+        
+        $properties = $reflect->getProperties(\ReflectionProperty::IS_PUBLIC);
+        
+        foreach ($properties as $property) {
+            if($stdClass->{$property->name} !== null) {
+                $this->{$property->name} = $stdClass->{$property->name};
+            }
+        }
+    }
+
 }
