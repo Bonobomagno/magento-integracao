@@ -6,7 +6,6 @@ use Proxies\IProductsProxy;
 use Proxies\ProxyFactory;
 use Resources\Products\ProductResource;
 use ProxyResults\IProxyResult;
-use MagentoConfigs;
 use ProxyResults\ProxyResultBase;
 
 final class MagentoProdutosMgr {
@@ -17,7 +16,7 @@ final class MagentoProdutosMgr {
     private $proxy;
 
     public function __construct() {
-        $this->proxy = ProxyFactory::FactoryProducts(MagentoConfigs::$CONTEXT);
+        $this->proxy = ProxyFactory::FactoryProducts(\MagentoConfigs::$CONTEXT);
     }
 
     /**
