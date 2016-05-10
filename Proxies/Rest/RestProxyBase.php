@@ -5,6 +5,7 @@ namespace Proxies\Rest;
 use Proxies\IProxy;
 use Resources\IResource;
 use ProxyResults\ProxyResultBase;
+use Filters\FilterBase;
 
 abstract class RestProxyBase implements IProxy {
     
@@ -26,10 +27,9 @@ abstract class RestProxyBase implements IProxy {
 
     /**
      * HTTP Method: GET
-     * @param int $category_id
      * @return ProxyResultBase
      */
-    public function Index() {
+    public function Index(FilterBase $filter) {
         $resourceName = $this->GetResourceName();
         $results = array();
         $page = 1;
