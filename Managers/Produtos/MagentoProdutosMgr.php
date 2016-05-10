@@ -17,7 +17,7 @@ final class MagentoProdutosMgr {
     private $proxy;
 
     public function __construct() {
-        $this->proxy = ProxyFactory::FactoryProducts(MagentoConfigs::Instance()->CONTEXT);
+        $this->proxy = ProxyFactory::FactoryProducts(MagentoConfigs::$CONTEXT);
     }
 
     /**
