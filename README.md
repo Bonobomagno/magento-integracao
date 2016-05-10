@@ -1,2 +1,2 @@
 # IntegradorMagento
-Camada de comunicação para API Magento
+Módulo de comunicação para APIs Magento
