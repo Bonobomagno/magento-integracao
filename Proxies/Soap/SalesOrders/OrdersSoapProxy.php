@@ -13,7 +13,7 @@ final class OrdersSoapProxy extends SoapProxyBase {
      * SOAP Method: salesOrderList
      * @return ProxyResultBase
      */
-    public function Index() {
+    public function Index(IFilter $filter) {
         try {
             $result = $this->GetContext()->GetClient()->salesOrderList($this->GetContext()->GetSession());
             return ProxyResultBase::CreateSuccessResult($result); 

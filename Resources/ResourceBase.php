@@ -25,7 +25,7 @@ class ResourceBase implements IResource {
         $properties = $reflect->getProperties(\ReflectionProperty::IS_PUBLIC);
         
         foreach ($properties as $property) {
-            if($stdClass->{$property->name} !== null) {
+            if(isset($stdClass->{$property->name})) {
                 $this->{$property->name} = $stdClass->{$property->name};
             }
         }

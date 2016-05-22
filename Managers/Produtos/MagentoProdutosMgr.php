@@ -15,8 +15,11 @@ final class MagentoProdutosMgr {
      */
     private $proxy;
 
-    public function __construct() {
-        $this->proxy = ProxyFactory::FactoryProducts(\MagentoConfigs::$CONTEXT);
+    public function __construct($context = null) {
+        if ($context == null) {
+            $context = \MagentoConfigs::$CONTEXT;
+        }
+        $this->proxy = ProxyFactory::FactoryProducts($context);
     }
 
     /**
@@ -28,7 +31,7 @@ final class MagentoProdutosMgr {
         
         if ($result->IsSuccess()) {
             $products = array();
-            foreach ($result as $resource) {
+            foreach ($result->GetResult() as $resource) {
                 $productResource = new ProductResource();
                 $productResource->StdClassToObject($resource);
                 array_push($products, $productResource);

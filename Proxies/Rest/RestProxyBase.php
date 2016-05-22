@@ -5,7 +5,8 @@ namespace Proxies\Rest;
 use Proxies\IProxy;
 use Resources\IResource;
 use ProxyResults\ProxyResultBase;
-use Filters\FilterBase;
+use Filters\IFilter;
+use Filters\RestFilterMgr;
 
 abstract class RestProxyBase implements IProxy {
     
@@ -24,12 +25,22 @@ abstract class RestProxyBase implements IProxy {
         
         return $this->context;
     }
+    
+    public function GetFilterValues(IFilter $filter) {
+        if ($filter != null) {
+            $filterMgr = new RestFilterMgr();
+            $filter->SetFilterMgr($filterMgr);
+            return $filter->GetFilterValues();
+        }
+        
+        return null;
+    }
 
     /**
      * HTTP Method: GET
      * @return ProxyResultBase
      */
-    public function Index(FilterBase $filter) {
+    public function Index(IFilter $filter) {
         $resourceName = $this->GetResourceName();
         $results = array();
         $page = 1;

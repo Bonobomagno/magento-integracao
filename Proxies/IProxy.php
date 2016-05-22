@@ -43,4 +43,11 @@ interface IProxy {
      */
     public function GetContext();
     
+    /**
+     * Formats filters for context
+     * @param IFilter $filter
+     * @return string Formatted string values
+     */
+    public function GetFilterValues(IFilter $filter);
+    
 }

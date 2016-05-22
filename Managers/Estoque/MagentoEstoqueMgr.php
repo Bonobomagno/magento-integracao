@@ -5,6 +5,7 @@ namespace Managers\Estoque;
 use Proxies\ProxyFactory;
 use ProxyResults\IProxyResult;
 use Resources\Inventory\StockItemResource;
+use Filters\Inventory\MagentoStockItemsFilter;
 
 final class MagentoEstoqueMgr {
 
@@ -18,8 +19,8 @@ final class MagentoEstoqueMgr {
      * 
      * @return IProxyResult
      */
-    public function ConsultarItensDoEstoque () {
-        return $this->proxy->Index();
+    public function ConsultarItensDoEstoque (MagentoStockItemsFilter $filter) {
+        return $this->proxy->Index($filter);
     }
     
     /**

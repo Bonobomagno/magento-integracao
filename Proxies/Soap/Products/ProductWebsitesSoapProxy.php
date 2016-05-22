@@ -20,7 +20,7 @@ final class ProductWebsitesSoapProxy extends SoapProxyBase {
      * SOAP Method: catalogProductInfo
      * @return ProxyResultBase
      */
-    public function Index() {
+    public function Index(IFilter $filter) {
         try {
             $this->ValidateProductId();
             

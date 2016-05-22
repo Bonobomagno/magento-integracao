@@ -20,7 +20,7 @@ final class ProductImagesSoapProxy extends SoapProxyBase implements IProductsIma
      * SOAP Method: catalogProductAttributeMediaList
      * @return ProxyResultBase
      */
-    public function Index() {
+    public function Index(IFilter $filter) {
         return $this->IndexByStoreId(null);
     }
 

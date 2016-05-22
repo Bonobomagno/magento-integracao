@@ -6,6 +6,7 @@ use Proxies\IStockItemsProxy;
 use Proxies\Soap\SoapProxyBase;
 use Resources\IResource;
 use ProxyResults\ProxyResultBase;
+use Filters\IFilter;
 
 final class StockItemsSoapProxy extends SoapProxyBase implements IStockItemsProxy {
     
@@ -14,7 +15,7 @@ final class StockItemsSoapProxy extends SoapProxyBase implements IStockItemsProx
      * SOAP Method: catalogInventoryStockItemList
      * @return ProxyResultBase
      */
-    public function Index() {
+    public function Index(IFilter $filter) {
         try {
             $products = $this->GetContext()->GetClient()->catalogProductList($this->GetContext()->GetSession());
             

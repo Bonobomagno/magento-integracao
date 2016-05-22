@@ -18,7 +18,7 @@ final class OrderItemsSoapProxy extends SoapProxyBase {
      * Allows you to retrieve the list of existing order items with detailed items information.
      * SOAP Method: salesOrderInfo
      */
-    public function Index() {
+    public function Index(IFilter $filter) {
         try {
             $result = $this->GetContext()->GetClient()->salesOrderInfo($this->GetContext()->GetSession(), $this->order_id);
             return ProxyResultBase::CreateSuccessResult($result->items); 

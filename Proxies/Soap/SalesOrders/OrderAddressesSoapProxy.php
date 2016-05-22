@@ -27,7 +27,7 @@ final class OrderAddressesSoapProxy extends SoapProxyBase {
      * SOAP Method: salesOrderInfo
      * @return ProxyResultBase
      */
-    public function Index() {
+    public function Index(IFilter $filter) {
         try {
             $result = $this->GetContext()->GetClient()->salesOrderInfo($this->GetContext()->GetSession(), $this->order_id);
             return ProxyResultBase::CreateSuccessResult(array($result->billing_address, $result->shipping_address));

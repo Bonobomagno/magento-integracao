@@ -281,4 +281,13 @@ final class ProductResource extends ResourceBase {
      * @var string[] 
      */
     public $website_ids;
+    
+    public function StdClassToObject(\stdClass $stdClass) {
+        parent::StdClassToObject($stdClass);
+        
+        $this->id = $stdClass->entity_id ? $stdClass->entity_id : $stdClass->product_id;
+        $this->attribute_set_id = $stdClass->attribute_set_id ? $stdClass->attribute_set_id : $stdClass->set;
+        $this->type_id  =  $stdClass->type_id ? $stdClass->type_id : $stdClass->type;
+    }
+    
 }

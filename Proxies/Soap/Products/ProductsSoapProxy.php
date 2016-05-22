@@ -6,6 +6,7 @@ use Proxies\IProductsProxy;
 use Proxies\Soap\SoapProxyBase;
 use Resources\IResource;
 use ProxyResults\ProxyResultBase;
+use Filters\IFilter;
 
 final class ProductsSoapProxy extends SoapProxyBase implements IProductsProxy {
     
@@ -35,11 +36,12 @@ final class ProductsSoapProxy extends SoapProxyBase implements IProductsProxy {
      * SOAP Method: catalogProductList
      * @return ProxyResultBase
      */
-    public function Index() {
+    public function Index(IFilter $filter) {
         try {
-            $result = $this->GetContext()->GetClient()->catalogProductList($this->GetContext()->GetSession());
+            $params = $this->GetFilterValues($filter);
+            $result = $this->GetContext()->GetClient()->catalogProductList($this->GetContext()->GetSession(), $params);
             return ProxyResultBase::CreateSuccessResult($result); 
-        } catch (\Exception $ex) {
+        } catch (\SoapFault $ex) {
             $errors = array();
             return ProxyResultBase::CreateErrorResult($errors, $ex->getMessage());
         }
